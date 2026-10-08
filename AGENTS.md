@@ -1,0 +1,44 @@
+# Repository Guidelines
+
+## Project Structure
+
+This is the Maha Constructions website application, under active development with React and Vite. `index.html` provides the app shell; `src/main.jsx` mounts the app; `src/site/App.jsx` contains the homepage and route selection; `src/site/AboutPage.jsx` contains the implemented About pages; `src/site/ContactPage.jsx` contains the Contact page; `src/styles.css` contains the responsive visual system. Keep reusable components and route-specific views under `src/`. Place approved local photography, logos, and other public assets in `public/` or a clearly named `src/assets/` directory. The approved logo is `public/images/maha-constructions-logo.png`; completed-project images copied from the official Sai Maha completed-projects page are stored in `public/images/completed-projects/`. Other remote project photos remain visual stand-ins pending approved Maha Constructions project images.
+
+## Pages and Behavior
+
+- `/` is the homepage. Preserve its image-only two-slide hero carousel, separate desktop/mobile images, responsive navigation, service accordion, featured project gallery, joint-venture section, and enquiry form UI.
+- `/about` is implemented in `src/site/AboutPage.jsx`. It is a company-focused editorial page with an asymmetric, image-free typographic hero. Preserve “ABOUT MAHA CONSTRUCTIONS” and “BUILDING WITH PURPOSE. GROWING WITH TRUST.”, the founder section, verified-history timeline, numbers, trust statements, principles, closing calls to action, and footer. Founder content and portrait, company history and milestones, metrics, and trust claims must remain placeholders until approved. The CSS portrait drawing is only a visual placeholder.
+- The About sequence is: hero; Word of the Founder; Our Story; By the Numbers; Why Maha Constructions; How We Build Matters; closing statement; footer. The Why section currently uses one remote photo as a temporary visual stand-in. Replace it with approved company photography when supplied; do not generate or invent a founder portrait.
+- `/about-2` is the second client-reviewable About option. It uses a photographic hero with an overlay title (“About Us”) and supporting trust message. Its remaining sections follow the company-story direction of the existing About page. Do not add project galleries or project images to its company-story content; focus on the company itself.
+- `/projects` is the project directory. Keep Ongoing and Completed in one grid controlled by the pill toggle; selecting a status replaces the visible cards without requiring a second section scroll. Ongoing cards hold location and key-detail fields; completed cards remain a minimal visual archive using the 16 published project names and local images from `public/images/completed-projects/`. Use placeholders for ongoing projects until approved names, facts, and photography are provided.
+- `/projects/:slug` is reserved for Ongoing project details. Link each Ongoing tile to its own project route; Completed tiles stay in the archive and do not lead to detail pages. Follow this order: hero, desktop-only sticky section navigation, About the Project, Project Details, Amenities & Features, Project Gallery, Floor Plans, Location, All Projects, footer. The section navigation sticks below the site header on desktop and is hidden on mobile. Keep the gallery asymmetric and the specification sheet clean. Until approved project information and media are supplied, render neutral placeholders rather than claims about a project's features, address, plans, map, or imagery.
+- `/contact` provides the company contact form, contact-detail placeholders, and Chennai map search embed. The form is UI-only until a submission service is configured; office address and phone/WhatsApp details remain placeholders until confirmed.
+- `/gallery` is a company gallery separate from the project galleries. Keep its Photo Gallery and Video Gallery toggle, placeholder tiles, and click-to-view media viewer; replace placeholders only with approved company photos or videos.
+- `/joint-venture` is the dedicated landowner partnership page. Preserve its hero and project image, trust strip, six partner-benefit items, six process stages, land-to-development approach, strength list, landowner enquiry form, testimonial placeholder, final CTA, and footer. Keep detailed commercial terms and partnership outcomes project-specific; customer portraits and testimonials remain placeholders until approved. The remote residential photo is a visual stand-in. The enquiry form is UI-only until a submission service is configured.
+- Keep navigation links between implemented and planned routes and preserve the current site header/footer patterns.
+
+## Maintaining This Guide
+
+Update `AGENTS.md` in the same change whenever routes, page behavior, dependencies, development commands, approved assets, or project-wide conventions are added, changed, or removed. Keep it as current contributor guidance: replace stale instructions instead of using it as a running changelog.
+
+## Development Commands
+
+- `npm install` installs the dependencies recorded in `package-lock.json`.
+- `npm run dev` starts the Vite development server.
+- Use the local URL printed by Vite (typically `http://localhost:5173/`) to open the running application. Keep the dev server process alive while the user is reviewing the site.
+- `npm run build` creates the production bundle in `dist/`.
+- `npm run preview` serves the production bundle locally for review.
+
+## Code and Design Conventions
+
+Use the existing React component structure and ES modules. Keep components focused, use descriptive names, and use two spaces for indentation. Use `@phosphor-icons/react` for interface icons; do not add another icon library. Keep icon sizing and weights consistent, and mark decorative icons as hidden from assistive technology. Keep page styles in `src/styles.css` until the project needs scoped styles. Use semantic HTML, accessible control labels, and responsive layouts. Follow the Maha palette (light green `#EAF5D8`, deep green `#174A2A`, forest `#0D3820`, accent `#78BE20`, warm white `#FAFAF6`). The homepage hero remains an image-only two-slide carousel with separate desktop and mobile images and no text overlay; the About hero is typographic and image-free. Preserve reduced-motion support when adding animation.
+
+Use GSAP for existing scroll reveals and image motion, and preserve reduced-motion support. The About page also has a founder-note carousel, expandable trust statements, a looping principles ticker, and a pinned desktop story heading; preserve keyboard access, responsive behavior, and reduced-motion handling for these interactions. Geist Variable is bundled with `@fontsource-variable/geist` for the About page; the homepage retains its existing typeface. Prefer clear editorial layouts that fit the relevant page brief. Use blank placeholders for company history, founder content, metrics, project content, and other facts until approved materials arrive; do not invent company facts, project details, or statistics. Do not generate images unless the user requests image generation; use approved assets or clearly labelled CSS/photography stand-ins. When a task explicitly requests `$gpt-taste`, apply it in a way that respects the user's page-specific requirements and the site's accessibility and brand conventions. Do not use the Sites skill for this project unless the user later asks for it.
+
+## Testing and Review
+
+No automated test framework is configured yet. Before handing off a UI change, run `npm run build` and review the affected flow in the browser at desktop and mobile widths. Check navigation, carousel controls, service accordion behavior, and enquiry form states when those areas change. Add tests when a test framework is introduced; use descriptive names tied to the behavior under test.
+
+## Commits and Pull Requests
+
+No Git history is available to establish a repository-specific convention. Use concise imperative subjects (for example, `Add responsive project gallery`). Pull requests should summarize the user-visible changes, note build and browser checks, link related issues when applicable, and include screenshots for visual changes.

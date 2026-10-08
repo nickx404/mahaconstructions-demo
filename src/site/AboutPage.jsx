@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '@fontsource-variable/geist';
+import { sitePath } from './paths.js';
 import {
   ArrowDown,
   ArrowLeft,
@@ -161,8 +162,8 @@ function AboutPage({ variant = 'original' }) {
   return (
     <div className="about-page">
       <header className={`site-header about-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}>
-          <img src="/images/maha-constructions-logo.png" alt="Maha Constructions" />
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}>
+          <img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" />
         </a>
         <button
           className="menu-toggle"
@@ -174,14 +175,14 @@ function AboutPage({ variant = 'original' }) {
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/">Home</a>
-          <a href="/about" aria-current="page" onClick={closeMenu}>About Us</a>
-          <a href="/about-2" onClick={closeMenu}>About Us · Page 2</a>
-          <a href="/#projects" onClick={closeMenu}>Projects</a>
-          <a href="/joint-venture" onClick={closeMenu}>Joint Venture</a>
-          <a href="/gallery" onClick={closeMenu}>Gallery</a>
-          <a href="/contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-enquiry" href="/contact#contact-form" onClick={closeMenu}>Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/')}>Home</a>
+          <a href={sitePath('/about')} aria-current="page" onClick={closeMenu}>About Us</a>
+          <a href={sitePath('/about-2')} onClick={closeMenu}>About Us · Page 2</a>
+          <a href={sitePath('/#projects')} onClick={closeMenu}>Projects</a>
+          <a href={sitePath('/joint-venture')} onClick={closeMenu}>Joint Venture</a>
+          <a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a>
+          <a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
+          <a className="nav-enquiry" href={sitePath('/contact#contact-form')} onClick={closeMenu}>Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
 
@@ -348,8 +349,8 @@ function AboutPage({ variant = 'original' }) {
             <h2 id="closing-title">MORE THAN<br />BUILDINGS.<br /><em>WE BUILD WHAT LASTS.</em></h2>
             <p>Every project can become part of something lasting. Start a conversation with Maha Constructions about what comes next.</p>
             <div className="closing-actions">
-              <a className="button button-light" href="/#projects">Explore our projects <ArrowUpRight size={16} aria-hidden="true" /></a>
-              <a className="button button-outline-light" href="/contact">Talk to us <ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="button button-light" href={sitePath('/#projects')}>Explore our projects <ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a className="button button-outline-light" href={sitePath('/contact')}>Talk to us <ArrowUpRight size={16} aria-hidden="true" /></a>
             </div>
           </div>
           <span className="closing-coordinate" aria-hidden="true">13°04′ N<br />80°16′ E</span>
@@ -359,12 +360,12 @@ function AboutPage({ variant = 'original' }) {
       <footer className="footer about-footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a>
+            <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a>
             <p>Building with purpose.<br />Growing with trust.</p>
             <a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a>
           </div>
-          <div className="footer-links"><span className="footer-label">Explore</span><a href="/">Home</a><a href="/about">About Us</a><a href="/#projects">Projects</a><a href="/joint-venture">Joint Venture</a></div>
-          <div className="footer-links"><span className="footer-label">Get in touch</span><a href="/contact">Contact Maha Constructions</a><a href="/contact#contact-form">Start an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
+          <div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/')}>Home</a><a href={sitePath('/about')}>About Us</a><a href={sitePath('/#projects')}>Projects</a><a href={sitePath('/joint-venture')}>Joint Venture</a></div>
+          <div className="footer-links"><span className="footer-label">Get in touch</span><a href={sitePath('/contact')}>Contact Maha Constructions</a><a href={sitePath('/contact#contact-form')}>Start an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
           <div className="footer-mark" aria-hidden="true">M<span>C</span></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Maha Constructions</span><span>Building with purpose. Growing with trust.</span><a href="#about-title">Back to top ↑</a></div>
@@ -406,13 +407,13 @@ function CompanyAboutPage() {
   return (
     <div className="about-page company-about-page">
       <header className={`site-header about-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a>
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/about-2" aria-current="page" onClick={closeMenu}>About Us</a><a href="/#projects" onClick={closeMenu}>Projects</a><a href="/#services" onClick={closeMenu}>Capabilities</a><a href="/gallery" onClick={closeMenu}>Gallery</a><a href="/contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-enquiry" href="/contact#contact-form" onClick={closeMenu}>Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/about-2')} aria-current="page" onClick={closeMenu}>About Us</a><a href={sitePath('/#projects')} onClick={closeMenu}>Projects</a><a href={sitePath('/#services')} onClick={closeMenu}>Capabilities</a><a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a><a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
+          <a className="nav-enquiry" href={sitePath('/contact#contact-form')} onClick={closeMenu}>Get in touch <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
       <main className="company-about-main">
@@ -461,9 +462,9 @@ function CompanyAboutPage() {
           <div className="company-principles-grid">{principles.map((principle) => <article key={principle.number} data-company-reveal><span>{principle.number}</span><h3>{principle.title}</h3><p>{principle.copy}</p></article>)}</div>
         </section>
 
-        <section className="company-closing" data-company-reveal><span className="eyebrow">A future built together</span><h2>More than buildings.<br/><em>We build what lasts.</em></h2><p>Learn more about Maha Constructions, or start a conversation with our team.</p><div><a className="button button-light" href="/#services">Explore our capabilities <ArrowUpRight size={16} aria-hidden="true"/></a><a className="button button-outline-light" href="/contact">Talk to us <ArrowUpRight size={16} aria-hidden="true"/></a></div></section>
+        <section className="company-closing" data-company-reveal><span className="eyebrow">A future built together</span><h2>More than buildings.<br/><em>We build what lasts.</em></h2><p>Learn more about Maha Constructions, or start a conversation with our team.</p><div><a className="button button-light" href={sitePath('/#services')}>Explore our capabilities <ArrowUpRight size={16} aria-hidden="true"/></a><a className="button button-outline-light" href={sitePath('/contact')}>Talk to us <ArrowUpRight size={16} aria-hidden="true"/></a></div></section>
       </main>
-      <footer className="footer about-footer company-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions"/></a><p>Building with purpose.<br/>Growing with trust.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13}/></a></div><div className="footer-links"><span className="footer-label">Explore</span><a href="/about">About Us · Page 1</a><a href="/about-2">About Us · Page 2</a><a href="/#projects">Projects</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href="/contact">Contact Maha Constructions</a><a href="/contact#contact-form">Start an enquiry <ArrowUpRight size={13}/></a></div><div className="footer-mark" aria-hidden="true">M<span>C</span></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Maha Constructions</span><span>Building with purpose. Growing with trust.</span><a href="#company-about-title">Back to top ↑</a></div></footer>
+      <footer className="footer about-footer company-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions"/></a><p>Building with purpose.<br/>Growing with trust.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13}/></a></div><div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/about')}>About Us · Page 1</a><a href={sitePath('/about-2')}>About Us · Page 2</a><a href={sitePath('/#projects')}>Projects</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href={sitePath('/contact')}>Contact Maha Constructions</a><a href={sitePath('/contact#contact-form')}>Start an enquiry <ArrowUpRight size={13}/></a></div><div className="footer-mark" aria-hidden="true">M<span>C</span></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Maha Constructions</span><span>Building with purpose. Growing with trust.</span><a href="#company-about-title">Back to top ↑</a></div></footer>
     </div>
   );
 }

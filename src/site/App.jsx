@@ -14,6 +14,7 @@ import {
 } from '@phosphor-icons/react';
 import AboutPage from './AboutPage.jsx';
 import ContactPage from './ContactPage.jsx';
+import { sitePath, siteRoute } from './paths.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,26 +104,26 @@ const ongoingProjects = [
 ];
 
 const completedProjects = [
-  { name: 'Maha Amogha', image: '/images/completed-projects/maha-amogha.png' },
-  { name: 'Maha Guru', image: '/images/completed-projects/maha-guru.png' },
-  { name: 'Maha Amrutha', image: '/images/completed-projects/maha-amrutha.png' },
-  { name: 'Maha Dhera', image: '/images/completed-projects/maha-dhera.png' },
-  { name: 'Maha Seyon', image: '/images/completed-projects/maha-seyon.png' },
-  { name: 'Maha Eeshaan', image: '/images/completed-projects/maha-eeshaan.png' },
-  { name: 'Maha Dwaraka', image: '/images/completed-projects/maha-dwaraka.png' },
-  { name: 'Maha Dhanya', image: '/images/completed-projects/maha-dhanya.png' },
-  { name: 'Maha Senthil', image: '/images/completed-projects/maha-senthil.png' },
-  { name: 'Maha Vira', image: '/images/completed-projects/maha-vira.png' },
-  { name: 'Maha Viveha', image: '/images/completed-projects/maha-viveha.png' },
-  { name: 'Maha Krthi', image: '/images/completed-projects/maha-krthi.png' },
-  { name: 'Maha Ganapathy', image: '/images/completed-projects/maha-ganapathy.png' },
-  { name: 'Maha Varuna', image: '/images/completed-projects/maha-varuna.png' },
-  { name: 'Maha Guhan', image: '/images/completed-projects/maha-gugan.png' },
-  { name: 'Maha Velan', image: '/images/completed-projects/maha-velan.png' },
+  { name: 'Maha Amogha', image: sitePath('/images/completed-projects/maha-amogha.png') },
+  { name: 'Maha Guru', image: sitePath('/images/completed-projects/maha-guru.png') },
+  { name: 'Maha Amrutha', image: sitePath('/images/completed-projects/maha-amrutha.png') },
+  { name: 'Maha Dhera', image: sitePath('/images/completed-projects/maha-dhera.png') },
+  { name: 'Maha Seyon', image: sitePath('/images/completed-projects/maha-seyon.png') },
+  { name: 'Maha Eeshaan', image: sitePath('/images/completed-projects/maha-eeshaan.png') },
+  { name: 'Maha Dwaraka', image: sitePath('/images/completed-projects/maha-dwaraka.png') },
+  { name: 'Maha Dhanya', image: sitePath('/images/completed-projects/maha-dhanya.png') },
+  { name: 'Maha Senthil', image: sitePath('/images/completed-projects/maha-senthil.png') },
+  { name: 'Maha Vira', image: sitePath('/images/completed-projects/maha-vira.png') },
+  { name: 'Maha Viveha', image: sitePath('/images/completed-projects/maha-viveha.png') },
+  { name: 'Maha Krthi', image: sitePath('/images/completed-projects/maha-krthi.png') },
+  { name: 'Maha Ganapathy', image: sitePath('/images/completed-projects/maha-ganapathy.png') },
+  { name: 'Maha Varuna', image: sitePath('/images/completed-projects/maha-varuna.png') },
+  { name: 'Maha Guhan', image: sitePath('/images/completed-projects/maha-gugan.png') },
+  { name: 'Maha Velan', image: sitePath('/images/completed-projects/maha-velan.png') },
 ];
 
 function App() {
-  const path = window.location.pathname.replace(/\/$/, '');
+  const path = siteRoute();
   if (path === '/about-2') return <AboutPage variant="company" />;
   if (path === '/about') return <AboutPage />;
   if (path === '/joint-venture') return <JointVenturePage />;
@@ -203,21 +204,21 @@ function JointVenturePage() {
   return (
     <div className="joint-venture-page">
       <header className={`site-header jv-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}>
-          <img src="/images/maha-constructions-logo.png" alt="Maha Constructions" />
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}>
+          <img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" />
         </a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/" onClick={closeMenu}>Home</a>
-          <a href="/about" onClick={closeMenu}>About Us</a>
-          <a href="/projects" onClick={closeMenu}>Projects</a>
-          <a href="/#services" onClick={closeMenu}>What We Do</a>
-          <a href="/joint-venture" aria-current="page" onClick={closeMenu}>Joint Venture</a>
-          <a href="/gallery" onClick={closeMenu}>Gallery</a>
-          <a href="/contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-enquiry" href="/contact#contact-form" onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/')} onClick={closeMenu}>Home</a>
+          <a href={sitePath('/about')} onClick={closeMenu}>About Us</a>
+          <a href={sitePath('/projects')} onClick={closeMenu}>Projects</a>
+          <a href={sitePath('/#services')} onClick={closeMenu}>What We Do</a>
+          <a href={sitePath('/joint-venture')} aria-current="page" onClick={closeMenu}>Joint Venture</a>
+          <a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a>
+          <a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
+          <a className="nav-enquiry" href={sitePath('/contact#contact-form')} onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
 
@@ -305,9 +306,9 @@ function JointVenturePage() {
 
       <footer className="footer jv-footer">
         <div className="footer-main">
-          <div className="footer-brand"><a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a></div>
-          <div className="footer-links"><span className="footer-label">Explore</span><a href="/about">About Us</a><a href="/projects">Projects</a><a href="/#services">What We Do</a><a href="/joint-venture">Joint Venture</a></div>
-          <div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="/contact#contact-form">Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
+          <div className="footer-brand"><a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a></div>
+          <div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/#services')}>What We Do</a><a href={sitePath('/joint-venture')}>Joint Venture</a></div>
+          <div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href={sitePath('/contact#contact-form')}>Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
           <div className="footer-mark" aria-hidden="true">S<span>M</span></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Sai Maha</span><span>Thoughtfully shaping what’s next.</span><a href="#jv-title">Back to top ↑</a></div>
@@ -370,21 +371,21 @@ function OngoingProjectPage({ project }) {
   return (
     <div className="projects-page project-detail-page">
       <header className={`site-header projects-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}>
-          <img src="/images/maha-constructions-logo.png" alt="Maha Constructions" />
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}>
+          <img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" />
         </a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/" onClick={closeMenu}>Home</a>
-          <a href="/about" onClick={closeMenu}>About Us</a>
-          <a href="/projects" onClick={closeMenu}>Projects</a>
-          <a href="/#services" onClick={closeMenu}>What We Do</a>
-          <a href="/joint-venture" onClick={closeMenu}>Joint Venture</a>
-          <a href="/gallery" onClick={closeMenu}>Gallery</a>
-          <a href="/contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-enquiry" href="/contact#contact-form" onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/')} onClick={closeMenu}>Home</a>
+          <a href={sitePath('/about')} onClick={closeMenu}>About Us</a>
+          <a href={sitePath('/projects')} onClick={closeMenu}>Projects</a>
+          <a href={sitePath('/#services')} onClick={closeMenu}>What We Do</a>
+          <a href={sitePath('/joint-venture')} onClick={closeMenu}>Joint Venture</a>
+          <a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a>
+          <a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
+          <a className="nav-enquiry" href={sitePath('/contact#contact-form')} onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
 
@@ -397,7 +398,7 @@ function OngoingProjectPage({ project }) {
             <span className="eyebrow">Ongoing project</span>
             <h1 id="project-detail-title">{project.name}</h1>
             <p><MapPin size={16} aria-hidden="true" /> {project.location}</p>
-            <a className="button button-light" href="/contact#contact-form">Enquire now <ArrowRight size={16} aria-hidden="true" /></a>
+            <a className="button button-light" href={sitePath('/contact#contact-form')}>Enquire now <ArrowRight size={16} aria-hidden="true" /></a>
           </div>
         </section>
 
@@ -484,7 +485,7 @@ function OngoingProjectPage({ project }) {
             <p>{project.location}<br />Full address to be updated</p>
             <h3>Nearby landmarks</h3>
             <ul><li>Landmark details to be updated</li><li>Transit details to be updated</li><li>Road access details to be updated</li></ul>
-            <a className="text-link" href="/projects">Explore all projects <ArrowUpRight size={16} aria-hidden="true" /></a>
+            <a className="text-link" href={sitePath('/projects')}>Explore all projects <ArrowUpRight size={16} aria-hidden="true" /></a>
           </div>
           <div className="project-map-placeholder" aria-label="Map placeholder"><MapPin size={34} weight="thin" aria-hidden="true" /><span>Location map to be added</span></div>
         </section>
@@ -492,15 +493,15 @@ function OngoingProjectPage({ project }) {
         <section className="project-all-projects" data-project-detail-reveal>
           <span className="eyebrow">Explore all projects</span>
           <h2>Discover more from Maha Constructions.</h2>
-          <a className="button button-light" href="/projects">View all projects <ArrowRight size={16} aria-hidden="true" /></a>
+          <a className="button button-light" href={sitePath('/projects')}>View all projects <ArrowRight size={16} aria-hidden="true" /></a>
         </section>
       </main>
 
       <footer className="footer">
         <div className="footer-main">
-          <div className="footer-brand"><a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a></div>
-          <div className="footer-links"><span className="footer-label">Explore</span><a href="/about">About Us</a><a href="/projects">Projects</a><a href="/#services">What We Do</a><a href="/joint-venture">Joint Venture</a></div>
-          <div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="/contact#contact-form">Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
+          <div className="footer-brand"><a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p><a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a></div>
+          <div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/#services')}>What We Do</a><a href={sitePath('/joint-venture')}>Joint Venture</a></div>
+          <div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href={sitePath('/contact#contact-form')}>Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a></div>
           <div className="footer-mark" aria-hidden="true">S<span>M</span></div>
         </div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Sai Maha</span><span>Thoughtfully shaping what’s next.</span><a href="#project-detail-title">Back to top ↑</a></div>
@@ -577,8 +578,8 @@ function ProjectsPage() {
   return (
     <div className="projects-page">
       <header className={`site-header projects-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}>
-          <img src="/images/maha-constructions-logo.png" alt="Maha Constructions" />
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}>
+          <img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" />
         </a>
         <button
           className="menu-toggle"
@@ -590,14 +591,14 @@ function ProjectsPage() {
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/" onClick={closeMenu}>Home</a>
-          <a href="/about" onClick={closeMenu}>About Us</a>
-          <a href="/projects" aria-current="page" onClick={closeMenu}>Projects</a>
-          <a href="/#services" onClick={closeMenu}>What We Do</a>
-          <a href="/joint-venture" onClick={closeMenu}>Joint Venture</a>
-          <a href="/gallery" onClick={closeMenu}>Gallery</a>
-          <a href="/contact" onClick={closeMenu}>Contact</a>
-          <a className="nav-enquiry" href="/contact#contact-form" onClick={closeMenu}>
+          <a href={sitePath('/')} onClick={closeMenu}>Home</a>
+          <a href={sitePath('/about')} onClick={closeMenu}>About Us</a>
+          <a href={sitePath('/projects')} aria-current="page" onClick={closeMenu}>Projects</a>
+          <a href={sitePath('/#services')} onClick={closeMenu}>What We Do</a>
+          <a href={sitePath('/joint-venture')} onClick={closeMenu}>Joint Venture</a>
+          <a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a>
+          <a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
+          <a className="nav-enquiry" href={sitePath('/contact#contact-form')} onClick={closeMenu}>
             Enquire <ArrowUpRight size={14} weight="regular" aria-hidden="true" />
           </a>
         </nav>
@@ -645,7 +646,7 @@ function ProjectsPage() {
           {projectStatus === 'ongoing' ? (
             <div className="ongoing-project-grid" key="ongoing">
               {ongoingProjects.map((project, index) => (
-                <a className="ongoing-project-card" href={`/projects/${project.slug}`} aria-label={`View details for ${project.name}, ${project.location}`} key={`${project.name}-${index}`} data-projects-reveal>
+                <a className="ongoing-project-card" href={sitePath(`/projects/${project.slug}`)} aria-label={`View details for ${project.name}, ${project.location}`} key={`${project.name}-${index}`} data-projects-reveal>
                   <div className="project-placeholder" data-projects-image aria-label="Project image placeholder">
                     <Buildings size={46} weight="thin" aria-hidden="true" />
                   </div>
@@ -679,17 +680,17 @@ function ProjectsPage() {
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a>
+            <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a>
             <p>Building spaces.<br />Creating possibilities.</p>
             <a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} aria-hidden="true" /></a>
           </div>
           <div className="footer-links">
             <span className="footer-label">Explore</span>
-            <a href="/about">About Us</a><a href="/projects">Projects</a><a href="/#services">What We Do</a><a href="/joint-venture">Joint Venture</a>
+            <a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/#services')}>What We Do</a><a href={sitePath('/joint-venture')}>Joint Venture</a>
           </div>
           <div className="footer-links">
             <span className="footer-label">Get in touch</span>
-            <a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="/contact#contact-form">Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a>
+            <a href="mailto:info@saimaha.com">info@saimaha.com</a><a href={sitePath('/contact#contact-form')}>Make an enquiry <ArrowUpRight size={13} aria-hidden="true" /></a>
           </div>
           <div className="footer-mark" aria-hidden="true">S<span>M</span></div>
         </div>
@@ -727,10 +728,10 @@ function GalleryPage() {
   return (
     <div className="gallery-page">
       <header className={`site-header projects-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a>
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}</button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/">Home</a><a href="/about">About Us</a><a href="/projects">Projects</a><a href="/#services">What We Do</a><a href="/joint-venture">Joint Venture</a><a href="/gallery" aria-current="page">Gallery</a><a href="/contact">Contact</a><a className="nav-enquiry" href="/contact#contact-form">Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/')}>Home</a><a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/#services')}>What We Do</a><a href={sitePath('/joint-venture')}>Joint Venture</a><a href={sitePath('/gallery')} aria-current="page">Gallery</a><a href={sitePath('/contact')}>Contact</a><a className="nav-enquiry" href={sitePath('/contact#contact-form')}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
       <main className="gallery-main section-shell">
@@ -746,7 +747,7 @@ function GalleryPage() {
           </button>)}
         </div>
       </main>
-      <footer className="footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p></div><div className="footer-links"><span className="footer-label">Explore</span><a href="/about">About Us</a><a href="/projects">Projects</a><a href="/gallery">Gallery</a><a href="/joint-venture">Joint Venture</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="/contact#contact-form">Make an enquiry</a></div></div></footer>
+      <footer className="footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href={sitePath('/')}><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p></div><div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/gallery')}>Gallery</a><a href={sitePath('/joint-venture')}>Joint Venture</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href={sitePath('/contact#contact-form')}>Make an enquiry</a></div></div></footer>
       {selectedItem && <div className="gallery-lightbox" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setSelectedItem(null)}><div className="gallery-lightbox-panel" role="dialog" aria-modal="true" aria-label={`${galleryType === 'photos' ? 'Photo' : 'Video'} placeholder`}><button type="button" className="gallery-lightbox-close" aria-label="Close viewer" onClick={() => setSelectedItem(null)}><X size={24} aria-hidden="true" /></button><div className="gallery-lightbox-art"><span>{galleryType === 'photos' ? 'Photo' : 'Video'} placeholder</span></div><p>{selectedItem.title}</p></div></div>}
     </div>
   );
@@ -850,7 +851,7 @@ function HomePage() {
     <>
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
         <a className="wordmark" href="#home" aria-label="Maha Constructions home" onClick={closeMenu}>
-          <img src="/images/maha-constructions-logo.png" alt="" />
+          <img src={sitePath('/images/maha-constructions-logo.png')} alt="" />
         </a>
         <button
           className="menu-toggle"
@@ -862,12 +863,12 @@ function HomePage() {
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/about" onClick={closeMenu}>About Us</a>
+          <a href={sitePath('/about')} onClick={closeMenu}>About Us</a>
           <a href="#projects" onClick={closeMenu}>Projects</a>
           <a href="#services" onClick={closeMenu}>What We Do</a>
-          <a href="/joint-venture" onClick={closeMenu}>Joint Venture</a>
-          <a href="/gallery" onClick={closeMenu}>Gallery</a>
-          <a href="/contact" onClick={closeMenu}>Contact</a>
+          <a href={sitePath('/joint-venture')} onClick={closeMenu}>Joint Venture</a>
+          <a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a>
+          <a href={sitePath('/contact')} onClick={closeMenu}>Contact</a>
           <a className="nav-enquiry" href="#enquiry" onClick={closeMenu}>
             Enquire <ArrowUpRight size={14} weight="regular" />
           </a>
@@ -930,7 +931,7 @@ function HomePage() {
             <p className="body-copy" data-word-reveal>
               Since 1990, Sai Maha has been shaping thoughtful places and property opportunities with a long view of what makes a community thrive.
             </p>
-            <a className="text-link" href="/joint-venture" data-reveal>
+            <a className="text-link" href={sitePath('/joint-venture')} data-reveal>
               Discover our story <ArrowRight size={16} />
             </a>
           </div>
@@ -979,7 +980,7 @@ function HomePage() {
             <span className="eyebrow">A few places we’re proud of</span>
             <h2>Built with care.<br />Made to belong.</h2>
             <p className="body-copy">Every project begins with listening—to the land, the neighbourhood and the people who will call it home.</p>
-            <a className="text-link" href="/projects">Explore all projects <ArrowRight size={16} /></a>
+            <a className="text-link" href={sitePath('/projects')}>Explore all projects <ArrowRight size={16} /></a>
             <div className="project-count"><span>01 — 03</span><span>Scroll to explore</span></div>
           </div>
           <div className="project-stack" aria-label="Featured project photography">
@@ -1057,13 +1058,13 @@ function HomePage() {
       <footer className="footer">
         <div className="footer-main">
           <div className="footer-brand">
-            <a className="wordmark" href="#home" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="" /></a>
+            <a className="wordmark" href="#home" aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="" /></a>
             <p>Building spaces.<br />Creating possibilities.</p>
             <a href="https://maps.google.com/?q=Chennai+Tamil+Nadu" target="_blank" rel="noreferrer">Chennai, Tamil Nadu <ArrowUpRight size={13} /></a>
           </div>
           <div className="footer-links">
             <span className="footer-label">Explore</span>
-            <a href="/about">About Us</a><a href="/projects">Projects</a><a href="#services">What We Do</a><a href="/joint-venture">Joint Venture</a>
+            <a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href="#services">What We Do</a><a href={sitePath('/joint-venture')}>Joint Venture</a>
           </div>
           <div className="footer-links">
             <span className="footer-label">Get in touch</span>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, List as Menu, MapPin, Phone, WhatsappLogo, X } from '@phosphor-icons/react';
+import { sitePath } from './paths.js';
 
 export default function ContactPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,12 +10,12 @@ export default function ContactPage() {
   return (
     <div className="contact-page">
       <header className={`site-header projects-header${menuOpen ? ' menu-open' : ''}`}>
-        <a className="wordmark" href="/" aria-label="Maha Constructions home" onClick={closeMenu}><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a>
+        <a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home" onClick={closeMenu}><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
           {menuOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
         <nav className={`main-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main navigation">
-          <a href="/" onClick={closeMenu}>Home</a><a href="/about" onClick={closeMenu}>About Us</a><a href="/projects" onClick={closeMenu}>Projects</a><a href="/#services" onClick={closeMenu}>What We Do</a><a href="/joint-venture" onClick={closeMenu}>Joint Venture</a><a href="/gallery" onClick={closeMenu}>Gallery</a><a href="/contact" aria-current="page" onClick={closeMenu}>Contact</a><a className="nav-enquiry" href="#contact-form" onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
+          <a href={sitePath('/')} onClick={closeMenu}>Home</a><a href={sitePath('/about')} onClick={closeMenu}>About Us</a><a href={sitePath('/projects')} onClick={closeMenu}>Projects</a><a href={sitePath('/#services')} onClick={closeMenu}>What We Do</a><a href={sitePath('/joint-venture')} onClick={closeMenu}>Joint Venture</a><a href={sitePath('/gallery')} onClick={closeMenu}>Gallery</a><a href={sitePath('/contact')} aria-current="page" onClick={closeMenu}>Contact</a><a className="nav-enquiry" href="#contact-form" onClick={closeMenu}>Enquire <ArrowUpRight size={14} aria-hidden="true" /></a>
         </nav>
       </header>
 
@@ -63,7 +64,7 @@ export default function ContactPage() {
         </section>
       </main>
 
-      <footer className="footer contact-page-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="/" aria-label="Maha Constructions home"><img src="/images/maha-constructions-logo.png" alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p></div><div className="footer-links"><span className="footer-label">Explore</span><a href="/about">About Us</a><a href="/projects">Projects</a><a href="/gallery">Gallery</a><a href="/joint-venture">Joint Venture</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="#contact-form">Make an enquiry</a></div></div></footer>
+      <footer className="footer contact-page-footer"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href={sitePath('/')} aria-label="Maha Constructions home"><img src={sitePath('/images/maha-constructions-logo.png')} alt="Maha Constructions" /></a><p>Building spaces.<br />Creating possibilities.</p></div><div className="footer-links"><span className="footer-label">Explore</span><a href={sitePath('/about')}>About Us</a><a href={sitePath('/projects')}>Projects</a><a href={sitePath('/gallery')}>Gallery</a><a href={sitePath('/joint-venture')}>Joint Venture</a></div><div className="footer-links"><span className="footer-label">Get in touch</span><a href="mailto:info@saimaha.com">info@saimaha.com</a><a href="#contact-form">Make an enquiry</a></div></div></footer>
     </div>
   );
 }
